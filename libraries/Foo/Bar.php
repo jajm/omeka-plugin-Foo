@@ -22,6 +22,10 @@ class Foo_bar extends AbstractCommand
 
     public function run($options, $args, Application $application)
     {
+        if (!empty($options) || !empty($args)) {
+            $this->logger->error($this->getUsage());
+            return 1;
+        }
         echo 'Hello, omeka-cli!' . PHP_EOL;
 
         return 0;
