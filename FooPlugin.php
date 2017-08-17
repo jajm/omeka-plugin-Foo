@@ -12,10 +12,12 @@ class FooPlugin extends Omeka_Plugin_AbstractPlugin
     {
         $events = Zend_EventManager_StaticEventManager::getInstance();
         $events->attach('OmekaCli', 'commands', function() {
-            return array(array(
-                'class' => 'Foo_Bar',
-                'aliases' => array('bar'),
-            ));
+            return array(
+                'Foo:Bar' => array(
+                    'class' => 'Foo_Bar',
+                    'aliases' => array('bar'),
+                ),
+            );
         });
     }
 
