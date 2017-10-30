@@ -1,9 +1,8 @@
 <?php
 
-use OmekaCli\Application;
 use OmekaCli\Command\AbstractCommand;
 
-class Foo_bar extends AbstractCommand
+class Foo_Bar extends AbstractCommand
 {
     public function getDescription()
     {
@@ -20,7 +19,7 @@ class Foo_bar extends AbstractCommand
         return $usage;
     }
 
-    public function run($options, $args, Application $application)
+    public function run($options, $args)
     {
         if (!empty($options) || !empty($args)) {
             $this->logger->error($this->getUsage());
