@@ -1,31 +1,21 @@
 <?php
 
 use OmekaCli\Command\AbstractCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class Foo_Bar extends AbstractCommand
 {
-    public function getDescription()
+    protected function configure()
     {
-        return 'print something to stdout';
+        $this->setName('foo:bar');
+        $this->setAliases(array('bar'));
+        $this->setDescription('print something to stdout');
     }
 
-    public function getUsage()
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $usage = 'Usage:' . PHP_EOL
-               . '    bar' . PHP_EOL
-               . PHP_EOL
-               . 'Print something to stdout.' . PHP_EOL;
-
-        return $usage;
-    }
-
-    public function run($options, $args)
-    {
-        if (!empty($options) || !empty($args)) {
-            $this->logger->error($this->getUsage());
-            return 1;
-        }
-        echo 'Hello, omeka-cli!' . PHP_EOL;
+        $output->writeln('Hello, omeka-cli!');
 
         return 0;
     }
